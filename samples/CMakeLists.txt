@@ -1,0 +1,6 @@
+add_subdirectory(01_echo)
+add_subdirectory(02_calc)
+add_subdirectory(03_numpy)
+add_subdirectory(04_struct)
+add_subdirectory(05_class)
+add_subdirectory(06_thread)
