@@ -6,9 +6,6 @@ namespace poppy {
 Dict::Dict(void* ptr)
   : Object(ptr) {}
 
-Dict::Dict(const Dict& obj)
-  : Object(obj) {}
-
 Dict::Dict(const std::map<std::string, Object>& initializer)
   : Object(Init(initializer)) {}
 
@@ -39,12 +36,12 @@ auto Dict::Set(const Object& key, const Object& item) const -> void {
   PyDict_SetItem(PYOBJ_PTR(this), PYOBJ_PTR(&key), PYOBJ_PTR(&item));
 }
 
-auto Dict::Get(const std::string& key) const -> Object {
-  return Object(PyDict_GetItemString(PYOBJ_PTR(this), key.c_str()));
+auto Dict::Get(const std::string& key) const -> Generic {
+  return Generic(PyDict_GetItemString(PYOBJ_PTR(this), key.c_str()));
 }
 
-auto Dict::Get(const Object& key) const -> Object {
-  return Object(PyDict_GetItem(PYOBJ_PTR(this), PYOBJ_PTR(&key)));
+auto Dict::Get(const Object& key) const -> Generic {
+  return Generic(PyDict_GetItem(PYOBJ_PTR(this), PYOBJ_PTR(&key)));
 }
 
 auto Dict::Delete(const std::string& key) const -> void {

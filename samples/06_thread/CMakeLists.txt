@@ -1,11 +1,1 @@
-set(TARGET 06_thread)
-
-add_executable(${TARGET} main.cpp)
-
-target_link_libraries(${TARGET} PRIVATE poppy)
-
-install(TARGETS ${TARGET}
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION bin
-  RUNTIME DESTINATION bin
-)
+REGISTER_EXECUTABLE(06_thread ${CMAKE_CURRENT_BINARY_DIR})

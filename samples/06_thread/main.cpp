@@ -10,7 +10,7 @@ int main() {
   // first,
   Initialize();
 
-  // relative path from workspace directory
+  // relative path
   AddModuleDirectory("scripts");
 
   // load script file
@@ -59,7 +59,7 @@ int main() {
 
   // print results
   cout << "------ Python -> C++ ------" << endl;
-  std::cout << "Result of sum: " << sum << std::endl;
+  cout << "Result of sum: " << sum << std::endl;
 
   // after destructing all,
   Finalize();

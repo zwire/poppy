@@ -8,7 +8,7 @@
       "request": "launch",
       "program": "${command:cmake.launchTargetPath}",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${command:cmake.launchTargetDirectory}",
       "externalConsole": true,
       "preLaunchTask": "CMake: install"
     },
@@ -19,7 +19,7 @@
       "request": "launch",
       "program": "${command:cmake.launchTargetPath}",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${command:cmake.launchTargetDirectory}",
       "externalConsole": true,
       "preLaunchTask": "CMake: install"
     }

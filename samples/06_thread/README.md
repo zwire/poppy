@@ -80,7 +80,7 @@ int main() {
 
   // print results
   cout << "------ Python -> C++ ------" << endl;
-  std::cout << "Result of sum: " << sum << std::endl;
+  cout << "Result of sum: " << sum << std::endl;
 
   // after destructing all,
   Finalize();

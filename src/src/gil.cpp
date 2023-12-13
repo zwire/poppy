@@ -17,7 +17,8 @@ private:
 
 
 GILContext::GILContext(void* context)
-  : context_(context), pimpl_(new GILContextImpl()) {}
+  : context_(context), 
+    pimpl_(new GILContextImpl()) {}
 
 GILContext::~GILContext() {
   delete pimpl_;

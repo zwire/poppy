@@ -9,11 +9,16 @@ if (WIN32)
 endif()
 FetchContent_MakeAvailable(googletest)
 
-file(GLOB_RECURSE TESTS *.cpp)
+file(GLOB TESTS *.cpp)
 foreach(TEST ${TESTS})
   get_filename_component(TARGET ${TEST} NAME_WE)
   add_executable(${TARGET} ${TEST})
   target_link_libraries(${TARGET} gtest_main poppy)
   include(GoogleTest)
-  gtest_discover_tests(${TARGET})
+  gtest_discover_tests(${TARGET}
+    DISCOVERY_MODE PRE_TEST
+    WORKING_DIRECTORY $<TARGET_FILE_DIR:${TARGET}>
+  )
 endforeach()
+
+install(FILES script.py DESTINATION $<TARGET_FILE_DIR:${TARGET}>)

@@ -117,57 +117,6 @@ TEST_F(Test, CastToFloat) {
   }
 }
 
-TEST_F(Test, CastTuple) {
-  // check type name
-  EXPECT_STREQ("tuple", Tuple(Int(1)).Type().c_str());
-
-  auto val = Tuple(Str("hello"), Int(-1));
-
-  // bad cast
-  try {
-    val.ToBuffer();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    val.ToDict();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    val.ToList();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    val.ToValue();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-}
-
-TEST_F(Test, CastList) {
-  auto list = List(Int(0), Str("a"), Float(1));
-  // check type name
-  EXPECT_STREQ("list", list.Type().c_str());
-
-  
-}
-
-TEST_F(Test, CastDict) {
-  
-}
 
 TEST_F(Test, CastBuffer) {
   // create buffer
@@ -211,56 +160,6 @@ TEST_F(Test, CastBuffer) {
 
   try {
     ndarray.ToValue();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-}
-
-TEST_F(Test, CastFunc) {
-  
-}
-
-TEST_F(Test, CastModule) {
-  // check type name
-  EXPECT_STREQ("module", module_.Type().c_str());
-
-  // bad cast
-  try {
-    module_.ToBuffer();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    module_.ToDict();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    module_.ToList();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    module_.ToTuple();
-    FAIL();
-  }
-  catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
-  }
-
-  try {
-    module_.ToValue();
     FAIL();
   }
   catch (std::bad_cast &e) {

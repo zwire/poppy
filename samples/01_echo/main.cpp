@@ -9,7 +9,7 @@ int main() {
   // first,
   Initialize();
 
-  // relative path from workspace directory
+  // relative path
   AddModuleDirectory("scripts");
 
   // load script file

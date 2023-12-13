@@ -40,6 +40,7 @@ Object::Object(const Object& obj)
 auto Object::Load(const std::string& file_name) -> Object {
   auto name = PyUnicode_DecodeFSDefault(file_name.c_str());
   auto module = PyImport_Import(name);
+  Py_DECREF(name);
   if (module) {
     return Object(module);
   } else {
@@ -84,87 +85,24 @@ auto Object::IsNone() const -> bool {
   return pimpl_->GetAddress() == Py_None;
 }
 
-auto Object::IsValue() const -> bool {
-  auto ptr = pimpl_->GetAddress();
-  return
-    PyBool_Check(ptr) ||
-    PyLong_Check(ptr) ||
-    PyFloat_Check(ptr) ||
-    PyUnicode_Check(ptr) ||
-    PyBytes_Check(ptr) ||
-    PyByteArray_Check(ptr);
+auto Object::ContainsAttribute(const std::string& name) const -> bool {
+  return PyObject_HasAttrString(PYOBJ_PTR(this), name.c_str());
 }
 
-auto Object::IsTuple() const -> bool {
-  return PyTuple_Check(pimpl_->GetAddress());
+auto Object::RemoveAttribute(const std::string& name) const -> bool {
+  return PyObject_DelAttrString(PYOBJ_PTR(this), name.c_str());
 }
 
-auto Object::IsList() const -> bool {
-  return PyList_Check(pimpl_->GetAddress());
+auto Object::SetAttribute(const std::string& name, const Object& obj) const -> bool {
+  return PyObject_SetAttrString(PYOBJ_PTR(this), name.c_str(), PYOBJ_PTR(&obj)) == 0;
 }
 
-auto Object::IsDict() const -> bool {
-  return PyDict_Check(pimpl_->GetAddress());
+auto Object::SetAttributes(const Dict& dict) const -> bool {
+  return PyObject_GenericSetDict(PYOBJ_PTR(this), PYOBJ_PTR(&dict), NULL) == 0;
 }
 
-auto Object::IsBuffer() const -> bool {
-  return PyObject_CheckBuffer(pimpl_->GetAddress());
-}
-
-auto Object::IsFunc() const -> bool {
-  return PyCallable_Check(pimpl_->GetAddress());
-}
-
-auto Object::ToValue() const -> Value {
-  if (IsValue()) {
-    return Value(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::ToTuple() const -> Tuple {
-  if (IsTuple()) {
-    return Tuple(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::ToList() const -> List {
-  if (IsList()) {
-    return List(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::ToDict() const -> Dict {
-  if (IsDict()) {
-    return Dict(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::ToBuffer() const -> Buffer {
-  if (IsBuffer()) {
-    return Buffer(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::ToFunc() const -> Func {
-  if (IsFunc()) {
-    return Func(GetAddress());
-  } else {
-    throw std::bad_cast();
-  }
-}
-
-auto Object::GetAttribute(const std::string& func_name) const -> Object {
-  return Object(PyObject_GetAttrString(PYOBJ_PTR(this), func_name.c_str()));
+auto Object::GetAttribute(const std::string& name) const -> Generic {
+  return Generic(PyObject_GetAttrString(PYOBJ_PTR(this), name.c_str()));
 }
 
 auto Object::GetAttributes() const -> Dict {

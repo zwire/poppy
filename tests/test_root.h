@@ -9,6 +9,7 @@ protected:
   virtual ~Test() { Finalize(); }
   static auto Init() -> Object {
     Initialize();
+    AddModuleDirectory("tests");
     return Import("script");
   }
   Object module_;

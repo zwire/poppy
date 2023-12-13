@@ -6,9 +6,6 @@ namespace poppy {
 List::List(void* ptr) 
   : Object(ptr) {}
 
-List::List(const List& obj)
-  : Object(obj) {}
-
 List::List(const std::vector<Object>& initializer)
   : Object(Init(initializer)) {}
 
@@ -25,8 +22,8 @@ auto List::Set(const int& index, const Object& item) const -> void {
   PyList_SetItem(PYOBJ_PTR(this), index, PYOBJ_PTR(&item));
 }
 
-auto List::Get(const int& index) const -> Object {
-  return Object(PyList_GetItem(PYOBJ_PTR(this), index));
+auto List::Get(const int& index) const -> Generic {
+  return Generic(PyList_GetItem(PYOBJ_PTR(this), index));
 }
 
 auto List::Get(const int& start, const int& end) const -> List {

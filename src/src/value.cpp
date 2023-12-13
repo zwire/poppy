@@ -6,9 +6,6 @@ namespace poppy {
 Value::Value(void* ptr)
   : Object(ptr) {}
 
-Value::Value(const Value& obj)
-  : Object(obj) {}
-
 auto Value::True() -> Value {
   return Value(Py_True);
 }

@@ -1,3 +1,14 @@
+function(REGISTER_EXECUTABLE TARGET OUT_DIR)
+  add_executable(${TARGET} main.cpp)
+  target_link_libraries(${TARGET} PRIVATE poppy)
+
+  install(TARGETS ${TARGET} RUNTIME DESTINATION bin)
+  install(FILES ${TARGET}.py DESTINATION bin/scripts)
+  foreach(OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES})
+    install(FILES ${TARGET}.py DESTINATION ${OUT_DIR}/${OUTPUTCONFIG}/scripts)
+  endforeach()
+endfunction()
+
 add_subdirectory(01_echo)
 add_subdirectory(02_calc)
 add_subdirectory(03_numpy)
