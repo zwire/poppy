@@ -6,6 +6,9 @@ This repository provides a C++ wrapper library for the C-API to control the Pyth
 
 Designed to it feels like calling a dynamic library.
 
+API Reference: https://husty530.github.io/poppy/
+
+
 Usage:
 ```cpp
 // main.cpp (caller)
@@ -41,7 +44,7 @@ def multiply(a: int, b: int) -> int:
 6. [thread](samples/06_thread)
 
 ### Requirements
-* Python installation (>= 3.9) with numpy package
+* Python installation (>= 3.10) with numpy package
 * C++ compiler
 * CMake (>= 3.14)
 * Visual Studio Code (with 'C/C++', 'CMake', 'CMake Tools' extensions)
