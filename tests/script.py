@@ -7,6 +7,9 @@ def echo(obj):
 def echo_fail(obj):
   raise Exception("panic!")
 
+def make_empty():
+  pass
+
 def make_buffer():
   return np.eye(2, 3, dtype=np.float32)
 

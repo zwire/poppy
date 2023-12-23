@@ -23,10 +23,6 @@ public:
   auto ObjectImpl::GetRef() const -> PyObject* {
     return ptr_;
   }
-  auto ObjectImpl::GetDuplicate() const -> PyObject* {
-    Py_INCREF(ptr_);
-    return ptr_;
-  }
 private:
   PyObject* ptr_;
 };
@@ -76,10 +72,6 @@ auto Object::None() -> Object {
 
 auto Object::GetRef() const -> void* {
   return pimpl_->GetRef();
-}
-
-auto Object::GetDuplicate() const -> void* {
-  return pimpl_->GetDuplicate();
 }
 
 auto Object::Type() const -> std::string {

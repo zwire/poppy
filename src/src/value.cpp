@@ -119,7 +119,7 @@ auto Value::ToBytes() const -> std::vector<char> {
     return std::vector<char>(ptr, ptr + size);
   } else {
     throw std::bad_cast();
-  }  
+  }
 }
 
 auto Value::ToByteArray() const -> std::vector<char> {
@@ -129,7 +129,7 @@ auto Value::ToByteArray() const -> std::vector<char> {
     return std::vector<char>(ptr, ptr + size);
   } else {
     throw std::bad_cast();
-  }  
+  }
 }
 
 }

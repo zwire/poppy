@@ -3,6 +3,9 @@
 TEST_F(Test, Receive) {
   auto module = Import("script");
 
+  auto empty = module.GetAttribute("make_empty").ToFunc()();
+  EXPECT_TRUE(empty.IsNone());
+
   auto buff = module.GetAttribute("make_buffer").ToFunc()().ToBuffer();
   EXPECT_EQ(6 * 4, buff.Length());
   EXPECT_EQ(2, buff.Dimensions());
