@@ -3,7 +3,7 @@
 
 namespace poppy {
 
-Tuple::Tuple(void* ptr) 
+Tuple::Tuple(void* ptr)
   : Object(ptr) {}
 
 Tuple::Tuple(const std::vector<Object>& initializer)
@@ -13,25 +13,29 @@ auto Tuple::Init(const std::vector<Object>& initializer) -> void* {
   auto tuple = PyTuple_New(initializer.size());
   int i = 0;
   for (const auto& item : initializer) {
-    PyTuple_SetItem(tuple, i++, PYOBJ_PTR(&item));
+    PyTuple_SetItem(tuple, i++, PYOBJ_REF(&item));
   }
   return tuple;
 }
 
-auto Tuple::Set(const int& index, const Object& item) const -> void {
-  PyTuple_SetItem(PYOBJ_PTR(this), index, PYOBJ_PTR(&item));
-}
-
 auto Tuple::Get(const int& index) const -> Generic {
-  return Generic(PyTuple_GetItem(PYOBJ_PTR(this), index));
-}
-
-auto Tuple::Get(const int& start, const int& end) const -> Generic {
-  return Generic(PyTuple_GetSlice(PYOBJ_PTR(this), start, end));
+  auto obj = PyTuple_GetItem(PYOBJ_REF(this), index);
+  if (!obj) {
+    throw std::out_of_range("");
+  }
+  return Generic(obj);
 }
 
 auto Tuple::Size() const -> size_t {
-  return PyTuple_Size(PYOBJ_PTR(this));
+  return PyTuple_Size(PYOBJ_REF(this));
+}
+
+auto Tuple::ToStdVector() const -> std::vector<Generic> {
+  std::vector<Generic> v;
+  for (int i = 0; i < Size(); ++i) {
+    v.push_back(Get(i));
+  }
+  return v;
 }
 
 }

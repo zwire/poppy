@@ -47,35 +47,35 @@ auto Value::FromByteArray(const std::vector<char>& buf) -> Value {
 }
 
 auto Value::IsTrue() const -> bool {
-  return PYOBJ_PTR(this) == Py_True;
+  return PYOBJ_REF(this) == Py_True;
 }
 
 auto Value::IsFalse() const -> bool {
-  return PYOBJ_PTR(this) == Py_False;
+  return PYOBJ_REF(this) == Py_False;
 }
 
 auto Value::IsBool() const -> bool {
-  return PyBool_Check(PYOBJ_PTR(this));
+  return PyBool_Check(PYOBJ_REF(this));
 }
 
 auto Value::IsInt() const -> bool {
-  return PyLong_Check(PYOBJ_PTR(this));
+  return PyLong_Check(PYOBJ_REF(this));
 }
 
 auto Value::IsFloat() const -> bool {
-  return PyFloat_Check(PYOBJ_PTR(this)) || IsInt();
+  return PyFloat_Check(PYOBJ_REF(this)) || IsInt();
 }
 
 auto Value::IsString() const -> bool {
-  return PyUnicode_Check(PYOBJ_PTR(this));
+  return PyUnicode_Check(PYOBJ_REF(this));
 }
 
 auto Value::IsBytes() const -> bool {
-  return PyBytes_Check(PYOBJ_PTR(this));
+  return PyBytes_Check(PYOBJ_REF(this));
 }
 
 auto Value::IsByteArray() const -> bool {
-  return PyByteArray_Check(PYOBJ_PTR(this));
+  return PyByteArray_Check(PYOBJ_REF(this));
 }
 
 auto Value::ToBool() const -> bool {
@@ -88,7 +88,7 @@ auto Value::ToBool() const -> bool {
 
 auto Value::ToInt() const -> long {
   if (IsInt()) {
-    return PyLong_AsLong(PYOBJ_PTR(this));
+    return PyLong_AsLong(PYOBJ_REF(this));
   } else {
     throw std::bad_cast();
   }
@@ -96,9 +96,9 @@ auto Value::ToInt() const -> long {
 
 auto Value::ToFloat() const -> double {
   if (IsFloat()) {
-    return PyFloat_AsDouble(PYOBJ_PTR(this));
+    return PyFloat_AsDouble(PYOBJ_REF(this));
   } else if (IsInt()) {
-    return PyLong_AsDouble(PYOBJ_PTR(this));
+    return PyLong_AsDouble(PYOBJ_REF(this));
   } else {
     throw std::bad_cast();
   }
@@ -106,7 +106,7 @@ auto Value::ToFloat() const -> double {
 
 auto Value::ToString() const -> std::string {
   if (IsString()) {
-    return std::string(PyUnicode_AsUTF8(PYOBJ_PTR(this)));
+    return std::string(PyUnicode_AsUTF8(PYOBJ_REF(this)));
   } else {
     throw std::bad_cast();
   }
@@ -114,8 +114,8 @@ auto Value::ToString() const -> std::string {
 
 auto Value::ToBytes() const -> std::vector<char> {
   if (IsBytes()) {
-    auto ptr = PyBytes_AsString(PYOBJ_PTR(this));
-    auto size = PyBytes_Size(PYOBJ_PTR(this));
+    auto ptr = PyBytes_AsString(PYOBJ_REF(this));
+    auto size = PyBytes_Size(PYOBJ_REF(this));
     return std::vector<char>(ptr, ptr + size);
   } else {
     throw std::bad_cast();
@@ -124,8 +124,8 @@ auto Value::ToBytes() const -> std::vector<char> {
 
 auto Value::ToByteArray() const -> std::vector<char> {
   if (IsByteArray()) {
-    auto ptr = PyByteArray_AsString(PYOBJ_PTR(this));
-    auto size = PyByteArray_Size(PYOBJ_PTR(this));
+    auto ptr = PyByteArray_AsString(PYOBJ_REF(this));
+    auto size = PyByteArray_Size(PYOBJ_REF(this));
     return std::vector<char>(ptr, ptr + size);
   } else {
     throw std::bad_cast();

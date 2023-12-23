@@ -77,8 +77,8 @@ int main() {
   // print results
   cout << "------ Python -> C++ ------" << endl;
   cout
-    << "unit: " << val.UnitSize() << endl
-    << "dim:  " << val.Dimensions() << endl;
+    << "bytes / unit: " << val.BytesPerUnit() << endl
+    << "dim: " << val.Dimensions() << endl;
   
   cout << "shape: [ ";
   for (const auto& s : shape) {
@@ -117,8 +117,8 @@ int main() {
  [2. 1. 0.]]
 
 ------ Python -> C++ ------
-unit: 8
-dim:  2
+bytes / unit: 8
+dim: 2
 shape: [ 4 7 ]
 strides: [ 56 8 ]
 

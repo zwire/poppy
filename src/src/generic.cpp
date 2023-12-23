@@ -7,7 +7,7 @@ Generic::Generic(void* ptr)
   : Object(ptr) {}
 
 auto Generic::IsValue() const -> bool {
-  auto ptr = GetAddress();
+  auto ptr = GetRef();
   return
     PyBool_Check(ptr) ||
     PyLong_Check(ptr) ||
@@ -18,28 +18,28 @@ auto Generic::IsValue() const -> bool {
 }
 
 auto Generic::IsTuple() const -> bool {
-  return PyTuple_Check(GetAddress());
+  return PyTuple_Check(GetRef());
 }
 
 auto Generic::IsList() const -> bool {
-  return PyList_Check(GetAddress());
+  return PyList_Check(GetRef());
 }
 
 auto Generic::IsDict() const -> bool {
-  return PyDict_Check(GetAddress());
+  return PyDict_Check(GetRef());
 }
 
 auto Generic::IsBuffer() const -> bool {
-  return PyObject_CheckBuffer(PYOBJ_PTR(this));
+  return PyObject_CheckBuffer(PYOBJ_REF(this));
 }
 
 auto Generic::IsFunc() const -> bool {
-  return PyCallable_Check(PYOBJ_PTR(this));
+  return PyCallable_Check(PYOBJ_REF(this));
 }
 
 auto Generic::ToValue() const -> Value {
   if (IsValue()) {
-    return Value(GetAddress());
+    return Value(GetRef());
   } else {
     throw std::bad_cast();
   }
@@ -47,7 +47,7 @@ auto Generic::ToValue() const -> Value {
 
 auto Generic::ToTuple() const -> Tuple {
   if (IsTuple()) {
-    return Tuple(GetAddress());
+    return Tuple(GetRef());
   } else {
     throw std::bad_cast();
   }
@@ -55,7 +55,7 @@ auto Generic::ToTuple() const -> Tuple {
 
 auto Generic::ToList() const -> List {
   if (IsList()) {
-    return List(GetAddress());
+    return List(GetRef());
   } else {
     throw std::bad_cast();
   }
@@ -63,7 +63,7 @@ auto Generic::ToList() const -> List {
 
 auto Generic::ToDict() const -> Dict {
   if (IsDict()) {
-    return Dict(GetAddress());
+    return Dict(GetRef());
   } else {
     throw std::bad_cast();
   }
@@ -71,7 +71,7 @@ auto Generic::ToDict() const -> Dict {
 
 auto Generic::ToBuffer() const -> Buffer {
   if (IsBuffer()) {
-    return Buffer(GetAddress());
+    return Buffer(GetRef());
   } else {
     throw std::bad_cast();
   }
@@ -79,7 +79,7 @@ auto Generic::ToBuffer() const -> Buffer {
 
 auto Generic::ToFunc() const -> Func {
   if (IsFunc()) {
-    return Func(GetAddress());
+    return Func(GetRef());
   } else {
     throw std::bad_cast();
   }

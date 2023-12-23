@@ -30,7 +30,9 @@ Buffer::Buffer(const Buffer& obj)
 Buffer::~Buffer() {
   if (*ref_ == 0) {
     delete pimpl_;
+    pimpl_ = nullptr;
     delete ref_;
+    ref_ = nullptr;
   } else {
     (*ref_)--;
   }
@@ -47,7 +49,7 @@ auto Buffer::Data() const -> void* {
   return pimpl_->buf.buf;
 }
 
-auto Buffer::UnitSize() const -> size_t {
+auto Buffer::BytesPerUnit() const -> size_t {
   return pimpl_->buf.itemsize;
 }
 

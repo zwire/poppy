@@ -19,15 +19,14 @@ int main() {
   // reserve function object
   auto func = module.GetAttribute("multiply").ToFunc();
 
-  // switch GIL context (acquire ownership),
-  // this procedure must be conducted in the main thread
-  auto context = GILContext::Acquire();
+  // acquire GIL context
+  GILContext context;
 
   // this variable can be double-accessed without any mutex
   auto sum = 0;
 
   // launch sub-thread (1)
-  std::thread th1([&]() {
+  std::thread th1([&context, &func, &sum]() {
     for (int i = 0; i < 1000; ++i) {
       // lock
       context.Lock();
@@ -39,7 +38,7 @@ int main() {
   });
 
   // launch sub-thread (2)
-  std::thread th2([&]() {
+  std::thread th2([&context, &func, &sum]() {
     for (int i = 0; i < 1000; ++i) {
       // auto-lock
       context.Scope([&func, &sum]() {
@@ -53,13 +52,12 @@ int main() {
   th1.join();
   th2.join();
 
-  // switch GIL context (release ownership),
-  // this procedure must be conducted in the main thread
-  context.Release();
-
   // print results
   cout << "------ Python -> C++ ------" << endl;
   cout << "Result of sum: " << sum << std::endl;
+  
+  // release GIL context
+  context.Release();
 
   // after destructing all,
   Finalize();

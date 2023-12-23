@@ -7,11 +7,19 @@ Func::Func(void* ptr)
   : Object(ptr) {}
 
 auto Func::Invoke() const -> Generic {
-  return Generic(PyObject_CallNoArgs(PYOBJ_PTR(this)));
+  auto ret = PyObject_CallNoArgs(PYOBJ_REF(this));
+  if (!ret) {
+    throw std::runtime_error("failed to run function");
+  }
+  return Generic(ret);
 }
 
 auto Func::Invoke(const Object& arg) const -> Generic {
-  return Generic(PyObject_CallOneArg(PYOBJ_PTR(this), PYOBJ_PTR(&arg)));
+  auto ret = PyObject_CallOneArg(PYOBJ_REF(this), PYOBJ_REF(&arg));
+  if (!ret) {
+    throw std::runtime_error("failed to run function");
+  }
+  return Generic(ret);
 }
 
 auto Func::operator()() const -> Generic {
@@ -23,7 +31,11 @@ auto Func::operator()(const Object& arg) const -> Generic {
 }
 
 auto Func::InvokeTuple(const Tuple& args) const -> Generic {
-  return Generic(PyObject_CallObject(PYOBJ_PTR(this), PYOBJ_PTR(&args)));
+  auto ret = PyObject_CallObject(PYOBJ_REF(this), PYOBJ_REF(&args));
+  if (!ret) {
+    throw std::runtime_error("failed to run function");
+  }
+  return Generic(ret);
 }
 
 }

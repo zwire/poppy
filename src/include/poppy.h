@@ -1,11 +1,12 @@
 #ifndef POPPY_POPPY_H_
 #define POPPY_POPPY_H_
 #define PY_SSIZE_T_CLEAN
-#define PYOBJ_PTR(item) reinterpret_cast<PyObject*>((item)->GetAddress())
+#define PYOBJ_REF(item) reinterpret_cast<PyObject*>((item)->GetRef())
+#define PYOBJ_COPY(item) reinterpret_cast<PyObject*>((item)->GetDuplicate())
 
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <stdexcept>
 #include <typeinfo>
 #include <functional>
@@ -30,7 +31,8 @@ public:
   virtual ~Object();
   static auto None() -> Object;
   auto operator=(const Object& obj) -> Object&;
-  auto GetAddress() const -> void*;
+  auto GetRef() const -> void*;
+  auto GetDuplicate() const -> void*;
   auto Type() const -> std::string;
   auto IsNone() const -> bool;
   auto ContainsAttribute(const std::string& name) const -> bool;
@@ -123,10 +125,9 @@ public:
   template<typename... Args>
   inline Tuple(const Object& head, const Args&... args)
     : Tuple(std::vector<Object>{ head, args... }) {}
-  auto Set(const int& index, const Object& item) const -> void;
   auto Get(const int& index) const -> Generic;
-  auto Get(const int& start, const int& end) const -> Generic;
   auto Size() const -> size_t;
+  auto ToStdVector() const -> std::vector<Generic>;
 private:
   static auto Init(const std::vector<Object>& initializer) -> void*;
   explicit Tuple(void* ptr);
@@ -147,13 +148,13 @@ public:
     : List(std::vector<Object>{ head, args... }) {}
   auto Set(const int& index, const Object& item) const -> void;
   auto Get(const int& index) const -> Generic;
-  auto Get(const int& start, const int& end) const -> List;
   auto Insert(const int& index, const Object& item) const -> void;
   auto Append(const Object& item) const -> void;
   auto Sort() const -> void;
   auto Reverse() const -> void;
   auto Size() const -> size_t;
   auto ToTuple() const -> Tuple;
+  auto ToStdVector() const -> std::vector<Generic>;
 private:
   static auto Init(const std::vector<Object>& initializer) -> void*;
   explicit List(void* ptr);
@@ -166,9 +167,8 @@ private:
  */
 class Dict final : public Object {
 public:
-  explicit Dict(const std::map<std::string, Object>& initializer);
-  explicit Dict(const std::map<Object, Object>& initializer
-    = std::map<Object, Object>());
+  Dict();
+  explicit Dict(const std::unordered_map<std::string, Object>& initializer);
   auto Set(const std::string& key, const Object& item) const -> void;
   auto Set(const Object& key, const Object& item) const -> void;
   auto Get(const std::string& key) const -> Generic;
@@ -180,11 +180,12 @@ public:
   auto GetKeys() const -> List;
   auto GetValues() const -> List;
   auto Size() const -> size_t;
+  auto ToStdVector() const -> std::vector<std::pair<Generic, Generic>>;
 private:
   static auto Init(
-    const std::map<std::string, Object>& initializer) -> void*;
+    const std::unordered_map<std::string, Object>& initializer) -> void*;
   static auto Init(
-    const std::map<Object, Object>& initializer) -> void*;
+    const std::unordered_map<Object, Object>& initializer) -> void*;
   explicit Dict(void* ptr);
   friend class Object;
   friend class Generic;
@@ -203,7 +204,7 @@ public:
   auto Data() const -> T* {
     return reinterpret_cast<T*>(Data());
   }
-  auto UnitSize() const -> size_t;
+  auto BytesPerUnit() const -> size_t;
   auto Length() const -> size_t;
   auto Format() const -> std::string;
   auto Dimensions() const -> int;
@@ -245,19 +246,20 @@ private:
   friend class Generic;
 };
 
-
+/**
+ * @brief GIL context switcher (Scoped Locking Pettern)
+ */
 class GILContext {
 public:
-  static auto Acquire() -> GILContext;
-  auto Release() -> void;
+  GILContext();
   virtual ~GILContext();
+  auto Release() -> void;
   auto Lock() -> void;
   auto Unlock() -> void;
   auto Scope(const std::function<void(void)>& func) -> void;
 private:
-  GILContext(void* context);
   class GILContextImpl* pimpl_;
-  void* context_;
+  bool released_;
 };
 
 /**
