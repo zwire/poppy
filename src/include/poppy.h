@@ -1,5 +1,6 @@
 #ifndef POPPY_POPPY_H_
 #define POPPY_POPPY_H_
+
 #define PY_SSIZE_T_CLEAN
 #define PYOBJ_REF(item) reinterpret_cast<PyObject*>((item)->GetRef())
 
@@ -30,6 +31,10 @@ class Func;
 class Object {
 public:
   /**
+   * @brief default constructor
+   */
+  Object();
+  /**
    * @brief copy constructor
    */
   Object(const Object& obj);
@@ -47,6 +52,30 @@ public:
    */
   auto operator=(const Object& obj) -> Object&;
   /**
+   * @brief operator overload
+   */
+  auto operator==(const Object& obj) const -> bool;
+  /**
+   * @brief operator overload
+   */
+  auto operator!=(const Object& obj) const -> bool;
+  /**
+   * @brief operator overload
+   */
+  auto operator<(const Object& obj) const -> bool;
+  /**
+   * @brief operator overload
+   */
+  auto operator<=(const Object& obj) const -> bool;
+  /**
+   * @brief operator overload
+   */
+  auto operator>(const Object& obj) const -> bool;
+  /**
+   * @brief operator overload
+   */
+  auto operator>=(const Object& obj) const -> bool;
+  /**
    * @brief get internal pointer address of current instance
    * @return void* pointer of PyObject
    */
@@ -56,6 +85,11 @@ public:
    * @return std::string type name
    */
   auto Type() const -> std::string;
+  /**
+   * @brief get hash value of current instance
+   * @return size_t hash value
+   */
+  auto Hash() const -> size_t;
   /**
    * @brief judge if current instance is none
    * @return bool judgement result
@@ -467,6 +501,11 @@ public:
    */
   explicit Dict(const std::unordered_map<std::string, Object>& initializer);
   /**
+   * @brief constructor
+   * @param[in] initializer dict elements
+   */
+  explicit Dict(const std::unordered_map<Object, Object>& initializer);
+  /**
    * @brief set one element
    * @param[in] key key
    * @param[in] item object to set
@@ -835,5 +874,17 @@ inline auto ByteArray(const T& head, const Args&... args) -> Value {
 }
 
 }  // namepsace poppy
+
+namespace std {
+
+template<>
+class hash<poppy::Object>{
+public:
+  auto operator()(const poppy::Object &obj) const -> size_t {
+    return obj.Hash();
+  }
+};
+
+}  // namespace std
 
 #endif  // POPPY_POPPY_H_

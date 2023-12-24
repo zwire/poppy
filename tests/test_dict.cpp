@@ -3,7 +3,16 @@
 TEST_F(Test, Dict) {
   auto key0 = Int(0);
   auto key1 = Str("key1");
-  auto t0 = Dict();
+
+  std::unordered_map<Object, Object> map;
+  map[key0] = Str("value0");
+  map.insert(std::make_pair(key1, Int(1)));
+  auto t0 = Dict(map);
+  EXPECT_EQ(2, t0.Size());
+  EXPECT_STREQ("value0", t0.Get(key0).ToValue().ToString().c_str());
+  EXPECT_EQ(1, t0.Get(key1).ToValue().ToInt());
+
+  t0 = Dict();
   t0.Set(key0, Str("value0"));
   t0.Set(key1, Int(1));
   t0.Set("key2", Tuple({ Int(-1), Float(0.5) }));

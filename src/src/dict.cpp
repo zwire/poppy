@@ -12,10 +12,21 @@ Dict::Dict()
 Dict::Dict(const std::unordered_map<std::string, Object>& initializer)
   : Object(Init(initializer)) {}
 
+Dict::Dict(const std::unordered_map<Object, Object>& initializer)
+  : Object(Init(initializer)) {}
+
 auto Dict::Init(const std::unordered_map<std::string, Object>& initializer) -> void* {
   auto dict = PyDict_New();
   for (const auto& kv : initializer) {
     PyDict_SetItemString(dict, kv.first.c_str(), PYOBJ_REF(&kv.second));
+  }
+  return dict;
+}
+
+auto Dict::Init(const std::unordered_map<Object, Object>& initializer) -> void* {
+  auto dict = PyDict_New();
+  for (const auto& kv : initializer) {
+    PyDict_SetItem(dict, PYOBJ_REF(&kv.first), PYOBJ_REF(&kv.second));
   }
   return dict;
 }

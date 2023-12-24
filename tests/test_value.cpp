@@ -166,3 +166,15 @@ TEST_F(Test, CastBuffer) {
     EXPECT_STREQ("bad cast", e.what());
   }
 }
+
+TEST_F(Test, Compare) {
+  auto v0 = Int(-1);
+  auto v1 = Int(5);
+  auto v2 = Float(8.3);
+  auto v3 = Float(8.3);
+  EXPECT_NE(v0, v1);
+  EXPECT_LE(v0, v1);
+  EXPECT_LE(v0, v2);
+  EXPECT_LE(v1, v2);
+  EXPECT_EQ(v2, v3);
+}

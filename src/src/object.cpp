@@ -14,11 +14,13 @@ public:
     Py_INCREF(ptr_);
   }
   ~ObjectImpl() {
+    printf("decref\n");
     Py_DECREF(ptr_);
   }
   auto ObjectImpl::operator=(const ObjectImpl& obj) -> ObjectImpl& {
-    Py_INCREF(ptr_);
     ptr_ = obj.ptr_;
+    Py_INCREF(ptr_);
+    return *this;
   }
   auto ObjectImpl::GetRef() const -> PyObject* {
     return ptr_;
@@ -26,6 +28,10 @@ public:
 private:
   PyObject* ptr_;
 };
+
+Object::Object()
+  : ref_(new int(0)), 
+    pimpl_(new ObjectImpl(Py_None)) {}
 
 Object::Object(void* ptr)
   : ref_(new int(0)), 
@@ -62,8 +68,33 @@ Object::~Object() {
 
 auto Object::operator=(const Object& obj) -> Object& {
   pimpl_ = obj.pimpl_;
+  ref_ = obj.ref_;
   (*ref_)++;
   return *this;
+}
+
+auto Object::operator==(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_EQ);
+}
+
+auto Object::operator!=(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_NE);
+}
+
+auto Object::operator<(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_LT);
+}
+
+auto Object::operator<=(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_LE);
+}
+
+auto Object::operator>(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_GT);
+}
+
+auto Object::operator>=(const Object& obj) const -> bool {
+  return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_GE);
 }
 
 auto Object::None() -> Object {
@@ -81,6 +112,10 @@ auto Object::Type() const -> std::string {
   auto str = PyUnicode_AsUTF8(type);
   Py_DECREF(type);
   return str;
+}
+
+auto Object::Hash() const -> size_t {
+  return PyObject_Hash(PYOBJ_REF(this));
 }
 
 auto Object::IsNone() const -> bool {
