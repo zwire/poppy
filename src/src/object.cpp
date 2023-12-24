@@ -14,7 +14,6 @@ public:
     Py_INCREF(ptr_);
   }
   ~ObjectImpl() {
-    printf("decref\n");
     Py_DECREF(ptr_);
   }
   auto ObjectImpl::operator=(const ObjectImpl& obj) -> ObjectImpl& {
