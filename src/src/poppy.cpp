@@ -3,18 +3,35 @@
 
 namespace poppy {
 
-void Initialize() {
+auto Initialize() -> void {
   if (!Py_IsInitialized()) {
     Py_Initialize();
     AddModuleDirectory(".");
   }
 }
 
-void Finalize() {
+auto Initialize(
+  const std::wstring& executable_path, 
+  const std::wstring& module_search_path) -> void {
+  if (!Py_IsInitialized()) {
+    PyConfig config;
+    PyConfig_InitPythonConfig(&config);
+    PyConfig_Read(&config);
+    config.module_search_paths_set = 1;
+    PyWideStringList_Append(
+      &config.module_search_paths, module_search_path.c_str());
+    PyConfig_SetString(
+      &config, &config.executable, executable_path.c_str());
+    Py_InitializeFromConfig(&config);
+    PyConfig_Clear(&config);
+  }
+}
+
+auto Finalize() -> void {
   Py_Finalize();
 }
 
-void AddModuleDirectory(const std::string& target_path) {
+auto AddModuleDirectory(const std::string& target_path) -> void {
   auto sys = PyImport_ImportModule("sys");
   auto path = PyObject_GetAttrString(sys, "path");
   Py_DECREF(sys);

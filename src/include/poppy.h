@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include <unordered_map>
 #include <stdexcept>
 #include <typeinfo>
@@ -91,6 +92,11 @@ public:
    */
   auto Hash() const -> size_t;
   /**
+   * @brief get string expression of current instance
+   * @return std::string string expression
+   */
+  auto ToString() const -> std::string;
+  /**
    * @brief judge if current instance is none
    * @return bool judgement result
    */
@@ -139,6 +145,11 @@ private:
   static auto Load(const std::string& file_name) -> Object;
   friend auto Import(const std::string& name) -> Object;
 };
+
+/**
+ * @brief operator
+ */
+auto operator<<(std::ostream& out, const Object& obj) -> std::ostream&;
 
 /**
  * @brief generic type behavior object
@@ -766,6 +777,15 @@ private:
  * @brief initialize Python interpreter
  */
 auto Initialize() -> void;
+
+/**
+ * @brief initialize Python interpreter
+ * @param[in] executable_path path to Python executable
+ * @param[in] modules_search_path path to search modules
+ */
+auto Initialize(
+  const std::wstring& executable_path, 
+  const std::wstring& modules_search_path) -> void;
 
 /**
  * @brief finalize Python interpreter

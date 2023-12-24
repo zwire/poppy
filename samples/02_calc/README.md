@@ -18,7 +18,6 @@ def multiply(a: int, b: int) -> int:
 * C++ code:
 ```cpp:main.cpp
 #include "poppy.h"
-#include <iostream>
 
 using std::cout;
 using std::endl;

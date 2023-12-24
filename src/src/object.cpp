@@ -96,6 +96,11 @@ auto Object::operator>=(const Object& obj) const -> bool {
   return PyObject_RichCompareBool(PYOBJ_REF(this), PYOBJ_REF(&obj), Py_GE);
 }
 
+auto operator<<(std::ostream& out, const Object& obj) -> std::ostream& {
+  out << obj.ToString();
+  return out;
+}
+
 auto Object::None() -> Object {
   return Object(Py_None);
 }
@@ -115,6 +120,13 @@ auto Object::Type() const -> std::string {
 
 auto Object::Hash() const -> size_t {
   return PyObject_Hash(PYOBJ_REF(this));
+}
+
+auto Object::ToString() const -> std::string {
+  auto repr = PyObject_Repr(PYOBJ_REF(this));
+  auto str = PyUnicode_AsUTF8(repr);
+  Py_XDECREF(repr);
+  return str;
 }
 
 auto Object::IsNone() const -> bool {

@@ -1,5 +1,4 @@
 #include "poppy.h"
-#include <iostream>
 
 using std::cout;
 using std::endl;
@@ -19,14 +18,11 @@ int main() {
   auto func = module.GetAttribute("echo").ToFunc();
 
   // run function
-  auto tuple = func(Str("hello")).ToTuple();
+  auto ret = func(Str("hello"));
 
   // print results
   cout << "------ Python -> C++ ------" << endl;
-  std::cout
-    << "Reply: "
-    << tuple.Get(0).ToValue().ToString() << ", "
-    << tuple.Get(1).ToValue().ToString() << "!" << std::endl;
+  cout << "Reply: " << ret << std::endl;
 
   // after destructing all,
   Finalize();

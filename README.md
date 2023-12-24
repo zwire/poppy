@@ -42,6 +42,7 @@ def multiply(a: int, b: int) -> int:
 4. [struct](samples/04_struct)
 5. [class](samples/05_class)
 6. [thread](samples/06_thread)
+7. [venv](samples/07_venv)
 
 ### Requirements
 * Python installation (>= 3.10) with numpy package

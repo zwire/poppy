@@ -8,13 +8,12 @@ def echo(message: str) -> tuple[str, str]:
   print("------ C++ -> Python ------")
   print(message)
   print()
-  return message, "world"
+  return message + "world!"
 ```
 
 * C++ code:
 ```cpp:main.cpp
 #include "poppy.h"
-#include <iostream>
 
 using std::cout;
 using std::endl;
@@ -24,7 +23,7 @@ int main() {
   // first,
   Initialize();
 
-  // relative path from workspace directory
+  // relative path
   AddModuleDirectory("scripts");
 
   // load script file
@@ -34,14 +33,11 @@ int main() {
   auto func = module.GetAttribute("echo").ToFunc();
 
   // run function
-  auto tuple = func(Str("hello")).ToTuple();
+  auto ret = func(Str("hello"));
 
   // print results
   cout << "------ Python -> C++ ------" << endl;
-  std::cout
-    << "Reply: "
-    << tuple.Get(0).ToValue().ToString() << ", "
-    << tuple.Get(1).ToValue().ToString() << "!" << std::endl;
+  cout << "Reply: " << ret << std::endl;
 
   // after destructing all,
   Finalize();
@@ -55,5 +51,5 @@ int main() {
 hello
 
 ------ Python -> C++ ------
-Reply: hello, world!
+Reply: 'helloworld!'
 ```

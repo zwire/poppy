@@ -27,7 +27,6 @@ def py2c() -> np.ndarray:
 * C++ code:
 ```cpp:main.cpp
 #include "poppy.h"
-#include <iostream>
 #include <iomanip>
 
 using std::cout;

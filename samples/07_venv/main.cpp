@@ -6,23 +6,23 @@ using namespace poppy;
 
 int main() {
   // first,
-  Initialize();
+  Initialize(PYTHON_EXECUTABLE_PATH, PYTHON_MODULES_SEARCH_PATH);
   
   // relative path from workspace directory
   AddModuleDirectory("scripts");
 
   // load script file
-  auto module = Import("02_calc");
+  auto module = Import("07_venv");
 
   // reserve function object
-  auto func = module.GetAttribute("multiply").ToFunc();
+  auto func = module.GetAttribute("factor").ToFunc();
 
-  // run function
-  auto val = func(Int(2), Int(3)).ToValue();
+  // run function (factorization)
+  auto ret = func(Str("x**2 + 2*x + 1"));
 
-  // print results
+  // print result
   cout << "------ Python -> C++ ------" << endl;
-  std::cout << "Result of call: " << val.ToInt() << std::endl;
+  cout << ret << endl;
 
   // after destructing all,
   Finalize();

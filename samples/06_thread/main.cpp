@@ -1,5 +1,4 @@
 #include "poppy.h"
-#include <iostream>
 #include <thread>
 
 using std::cout;
