@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['release_0',['Release',['../classpoppy_1_1_g_i_l_context.html#a1b617640fd050e311ae337abad83f31e',1,'poppy::GILContext']]],
-  ['removeattribute_1',['RemoveAttribute',['../classpoppy_1_1_object.html#aef54cc8125cda773efb9285975432ef8',1,'poppy::Object']]],
-  ['reverse_2',['Reverse',['../classpoppy_1_1_list.html#a8f363d258cc4330efea75d27c6dd9f11',1,'poppy::List']]]
+  ['poppy_0',['poppy',['../namespacepoppy.html',1,'']]],
+  ['poppy_2eh_1',['poppy.h',['../poppy_8h.html',1,'']]],
+  ['py_5fssize_5ft_5fclean_2',['PY_SSIZE_T_CLEAN',['../poppy_8h.html#ac9efdaac9411d0868b715edccca3269d',1,'poppy.h']]],
+  ['pyobj_5fref_3',['PYOBJ_REF',['../poppy_8h.html#aa55d50c46c54b198c59951465240ba84',1,'poppy.h']]]
 ];

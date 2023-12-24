@@ -1,19 +1,13 @@
 var searchData=
 [
-  ['tobool_0',['ToBool',['../classpoppy_1_1_value.html#aa7d06dffcd5fc4bc072370a4ded9a696',1,'poppy::Value']]],
-  ['tobuffer_1',['ToBuffer',['../classpoppy_1_1_generic.html#a663acae3684079e9f606cb983421f8ed',1,'poppy::Generic']]],
-  ['tobytearray_2',['ToByteArray',['../classpoppy_1_1_value.html#aa90145273939f4b73a33f07bf00e0ed4',1,'poppy::Value']]],
-  ['tobytes_3',['ToBytes',['../classpoppy_1_1_value.html#a559492281244ebeb38896a09bbacfa94',1,'poppy::Value']]],
-  ['todict_4',['ToDict',['../classpoppy_1_1_generic.html#a29ac891efb65a886caec8d14f8e99153',1,'poppy::Generic']]],
-  ['tofloat_5',['ToFloat',['../classpoppy_1_1_value.html#adfccbf4c6a843ceb8c285526a8acdc3c',1,'poppy::Value']]],
-  ['tofunc_6',['ToFunc',['../classpoppy_1_1_generic.html#a1834d804854b469cea63e8c59e1dbb75',1,'poppy::Generic']]],
-  ['toint_7',['ToInt',['../classpoppy_1_1_value.html#a76d005b928f713d24417e0f37f888db9',1,'poppy::Value']]],
-  ['tolist_8',['ToList',['../classpoppy_1_1_generic.html#a2708f7e3542c9f7ed1847f594bb2ca07',1,'poppy::Generic']]],
-  ['tostdvector_9',['tostdvector',['../classpoppy_1_1_tuple.html#af6b2d823392f0a4c4a2e30dbe20e261e',1,'poppy::Tuple::ToStdVector()'],['../classpoppy_1_1_list.html#a2d985995511112858758a89151c69c04',1,'poppy::List::ToStdVector()'],['../classpoppy_1_1_dict.html#af5401f41fc59e3280785b5b088cf5d90',1,'poppy::Dict::ToStdVector()']]],
-  ['tostring_10',['ToString',['../classpoppy_1_1_value.html#aedab9614690b9025d3f7c5a5d2fa594f',1,'poppy::Value']]],
-  ['totuple_11',['totuple',['../classpoppy_1_1_generic.html#a4dbcd33efc46637f0f3a62dc79a70838',1,'poppy::Generic::ToTuple()'],['../classpoppy_1_1_list.html#a958665a86b950b0d682f40ffe4b1f30a',1,'poppy::List::ToTuple()']]],
-  ['tovalue_12',['ToValue',['../classpoppy_1_1_generic.html#a94e2d00b9d54a73dc7ce719c8b7452d4',1,'poppy::Generic']]],
-  ['true_13',['True',['../classpoppy_1_1_value.html#ade16ed9814df9d263fddf07970dee118',1,'poppy::Value']]],
-  ['tuple_14',['tuple',['../classpoppy_1_1_tuple.html',1,'poppy::Tuple'],['../classpoppy_1_1_tuple.html#aa09c35259cd4b1c2d306119860592215',1,'poppy::Tuple::Tuple(const std::vector&lt; Object &gt; &amp;initializer)'],['../classpoppy_1_1_tuple.html#a364f63a3acf54b76c8a791e275238a26',1,'poppy::Tuple::Tuple(const Object &amp;head, const Args &amp;... args)']]],
-  ['type_15',['Type',['../classpoppy_1_1_object.html#a6eeab79d53164a1b1454d8190366b070',1,'poppy::Object']]]
+  ['scope_0',['Scope',['../classpoppy_1_1_g_i_l_context.html#a1135d2a966b0e4171d6795c9b48fd55e',1,'poppy::GILContext']]],
+  ['set_1',['set',['../classpoppy_1_1_list.html#abc7fa94a502f9b6835bf70ff26f85bd8',1,'poppy::List::Set()'],['../classpoppy_1_1_dict.html#a099d6c0379f3b31519e9f0142cdf11b6',1,'poppy::Dict::Set(const std::string &amp;key, const Object &amp;item) const -&gt; void'],['../classpoppy_1_1_dict.html#a9473c65f77193536f9a23cc56850af0f',1,'poppy::Dict::Set(const Object &amp;key, const Object &amp;item) const -&gt; void']]],
+  ['setattribute_2',['SetAttribute',['../classpoppy_1_1_object.html#a85fffa1dab9c6b8f1b95eba747ec2211',1,'poppy::Object']]],
+  ['setattributes_3',['SetAttributes',['../classpoppy_1_1_object.html#a1e0bd0a221662a89ea10b5c0c4afaa26',1,'poppy::Object']]],
+  ['shape_4',['Shape',['../classpoppy_1_1_buffer.html#a3dda2f514f597d1177a70f243e37e13d',1,'poppy::Buffer']]],
+  ['size_5',['size',['../classpoppy_1_1_tuple.html#a4dca3f06d2e55884c681ad4d6a586cf4',1,'poppy::Tuple::Size()'],['../classpoppy_1_1_list.html#ab8621cb9bcb21a5bbe5eb7012b3d008e',1,'poppy::List::Size()'],['../classpoppy_1_1_dict.html#a2dede9510bf55a243834ecfe78259b0e',1,'poppy::Dict::Size()']]],
+  ['sort_6',['Sort',['../classpoppy_1_1_list.html#a61f5322b1b1d94af3aaffc54296a0d06',1,'poppy::List']]],
+  ['std_7',['std',['../namespacestd.html',1,'']]],
+  ['str_8',['Str',['../namespacepoppy.html#a84d0c175ce69248c1613923107c0bf2b',1,'poppy']]],
+  ['strides_9',['Strides',['../classpoppy_1_1_buffer.html#a6df6ebb5352d15ad56c42e4d3248b581',1,'poppy::Buffer']]]
 ];

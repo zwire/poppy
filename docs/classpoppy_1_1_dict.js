@@ -2,6 +2,7 @@ var classpoppy_1_1_dict =
 [
     [ "Dict", "classpoppy_1_1_dict.html#aca7c027a1497fd37a8517c219d907b6d", null ],
     [ "Dict", "classpoppy_1_1_dict.html#ad1aa81134bcd9ccd7b83b1f90ccac4a1", null ],
+    [ "Dict", "classpoppy_1_1_dict.html#a665d4f2b72649b25fcf5df51703a50c3", null ],
     [ "Contains", "classpoppy_1_1_dict.html#aa8d7b0e42913a621cb95b86c74654a8c", null ],
     [ "Contains", "classpoppy_1_1_dict.html#a3a65496ceeea352b0aec1496a28d862c", null ],
     [ "Delete", "classpoppy_1_1_dict.html#a690662cc12e0479a8f5bcddd06ac760c", null ],
