@@ -1,7 +1,7 @@
 #include "test_root.h"
 
 TEST_F(Test, Tuple) {
-  auto t0 = Tuple({ Int(-1), Float(8), Str("hello") });
+  auto t0 = Tuple(std::vector<Object>{ Int(-1), Float(8), Str("hello") });
   EXPECT_EQ(3, t0.Size());
   EXPECT_EQ(-1, t0.Get(0).ToValue().ToInt());
   EXPECT_FLOAT_EQ(8, t0.Get(1).ToValue().ToFloat());
@@ -25,7 +25,7 @@ TEST_F(Test, Tuple) {
 }
 
 TEST_F(Test, TupleAbnormal) {
-  auto t0 = Tuple({ Int(-1), Float(8), Str("hello") });
+  auto t0 = Tuple(std::vector<Object>{ Int(-1), Float(8), Str("hello") });
 
   try {
     auto t1 = t0.Get(-1);

@@ -46,17 +46,16 @@ def multiply(a: int, b: int) -> int:
 
 ### Requirements
 * Python installation (>= 3.10) with numpy package
-* C++ compiler
-* CMake (>= 3.14)
+* C++ (>= c++14)
+* CMake (>= 3.18)
 * Visual Studio Code (with 'C/C++', 'CMake', 'CMake Tools' extensions)
 
 NOTE: To build with Debug configuration, you need to install the Python debugger static library (python3xxd.lib). If not, only Release builds are available.
 
 ### Build and Run
-1. In [settings.json](.vscode/settings.json), please edit 'PYTHONPATH' to your envirionment. If already registered, comment out this line.
-2. Open this (top) directory by Visual Studio Code.
-3. Do CMake 'Configure'.
-4. Select target & launch (F5).
+1. Open this (top) directory by Visual Studio Code.
+2. Do CMake 'Configure'.
+3. Select target & launch (F5).
 
 ### References
 * [Embedding Python in Another Application](https://docs.python.org/3/extending/embedding.html)

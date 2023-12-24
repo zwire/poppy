@@ -1,8 +1,4 @@
 {
-  "cmake.environment": {
-    // edit to your environment
-    "PYTHONPATH": "C:/Users/xxx/AppData/Local/Programs/Python/Python3xx"
-  },
   "cmake.configureSettings": {
     "BUILD_TESTS": "ON",
     "BUILD_SAMPLES": "ON",
@@ -86,6 +82,42 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp",
     "variant": "cpp",
-    "xhash": "cpp"
-  }
+    "xhash": "cpp",
+    "cstdarg": "cpp",
+    "cwctype": "cpp",
+    "*.tcc": "cpp",
+    "bitset": "cpp",
+    "codecvt": "cpp",
+    "complex": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "string_view": "cpp",
+    "numbers": "cpp",
+    "semaphore": "cpp",
+    "cinttypes": "cpp",
+    "typeindex": "cpp"
+  },
+  "python.autoComplete.extraPaths": [
+    "/home/husty/ws/install/vp_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/vectornav_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/tricycle_description/lib/python3.10/site-packages",
+    "/home/husty/ws/install/nmea_navsat_driver/lib/python3.10/site-packages",
+    "/home/husty/ws/install/geodesy/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/geographic_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/can_msgs/local/lib/python3.10/dist-packages",
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "/home/husty/ws/install/vp_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/vectornav_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/tricycle_description/lib/python3.10/site-packages",
+    "/home/husty/ws/install/nmea_navsat_driver/lib/python3.10/site-packages",
+    "/home/husty/ws/install/geodesy/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/geographic_msgs/local/lib/python3.10/dist-packages",
+    "/home/husty/ws/install/can_msgs/local/lib/python3.10/dist-packages",
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ]
 }

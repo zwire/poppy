@@ -68,7 +68,8 @@ auto Dict::Delete(const Object& key) const -> void {
 }
 
 auto Dict::Contains(const std::string& key) const -> bool {
-  return PyDict_Contains(PYOBJ_REF(this), PYOBJ_REF(&Value::FromString(key)));
+  auto str = Value::FromString(key);
+  return PyDict_Contains(PYOBJ_REF(this), PYOBJ_REF(&str));
 }
 
 auto Dict::Contains(const Object& key) const -> bool {

@@ -15,7 +15,7 @@ TEST_F(Test, Dict) {
   t0 = Dict();
   t0.Set(key0, Str("value0"));
   t0.Set(key1, Int(1));
-  t0.Set("key2", Tuple({ Int(-1), Float(0.5) }));
+  t0.Set("key2", Tuple(std::vector<Object>{ Int(-1), Float(0.5) }));
 
   EXPECT_EQ(3, t0.Size());
   EXPECT_STREQ("value0", t0.Get(key0).ToValue().ToString().c_str());

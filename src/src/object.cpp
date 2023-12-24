@@ -16,12 +16,12 @@ public:
   ~ObjectImpl() {
     Py_DECREF(ptr_);
   }
-  auto ObjectImpl::operator=(const ObjectImpl& obj) -> ObjectImpl& {
+  auto operator=(const ObjectImpl& obj) -> ObjectImpl& {
     ptr_ = obj.ptr_;
     Py_INCREF(ptr_);
     return *this;
   }
-  auto ObjectImpl::GetRef() const -> PyObject* {
+  auto GetRef() const -> PyObject* {
     return ptr_;
   }
 private:

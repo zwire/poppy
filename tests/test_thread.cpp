@@ -1,4 +1,5 @@
 #include "test_root.h"
+#include <thread>
 
 TEST_F(Test, Thread) {
   GILContext context;

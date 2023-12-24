@@ -12,7 +12,7 @@ TEST_F(Test, CastToBool) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -22,7 +22,7 @@ TEST_F(Test, CastToBool) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -32,7 +32,7 @@ TEST_F(Test, CastToBool) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 }
 
@@ -55,7 +55,7 @@ TEST_F(Test, CastToInt) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -65,7 +65,7 @@ TEST_F(Test, CastToInt) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -75,7 +75,7 @@ TEST_F(Test, CastToInt) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 }
 
@@ -103,7 +103,7 @@ TEST_F(Test, CastToFloat) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -113,7 +113,7 @@ TEST_F(Test, CastToFloat) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 }
 
@@ -139,7 +139,7 @@ TEST_F(Test, CastBuffer) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -147,7 +147,7 @@ TEST_F(Test, CastBuffer) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -155,7 +155,7 @@ TEST_F(Test, CastBuffer) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 
   try {
@@ -163,7 +163,7 @@ TEST_F(Test, CastBuffer) {
     FAIL();
   }
   catch (std::bad_cast &e) {
-    EXPECT_STREQ("bad cast", e.what());
+    EXPECT_STREQ(BAD_CAST, e.what());
   }
 }
 

@@ -17,11 +17,11 @@ auto Initialize(
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
     PyConfig_Read(&config);
-    config.module_search_paths_set = 1;
-    PyWideStringList_Append(
-      &config.module_search_paths, module_search_path.c_str());
     PyConfig_SetString(
       &config, &config.executable, executable_path.c_str());
+    config.module_search_paths_set = true;
+    PyWideStringList_Append(
+      &config.module_search_paths, module_search_path.c_str());
     Py_InitializeFromConfig(&config);
     PyConfig_Clear(&config);
   }

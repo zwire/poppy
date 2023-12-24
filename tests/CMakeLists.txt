@@ -14,6 +14,11 @@ foreach(TEST ${TESTS})
   get_filename_component(TARGET ${TEST} NAME_WE)
   add_executable(${TARGET} ${TEST})
   target_link_libraries(${TARGET} gtest_main poppy)
+  if (WIN32)
+    target_compile_definitions(${TARGET} PRIVATE BAD_CAST="bad_cast")
+  else()
+    target_compile_definitions(${TARGET} PRIVATE BAD_CAST="std::bad_cast")
+  endif()
   include(GoogleTest)
   gtest_discover_tests(${TARGET}
     DISCOVERY_MODE PRE_TEST
