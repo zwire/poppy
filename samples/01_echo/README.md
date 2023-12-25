@@ -8,7 +8,7 @@ def echo(message: str) -> str:
   print("------ C++ -> Python ------")
   print(message)
   print()
-  return message + "world!"
+  return message + ", world!"
 ```
 
 * C++ code:
@@ -51,5 +51,5 @@ int main() {
 hello
 
 ------ Python -> C++ ------
-Reply: 'helloworld!'
+Reply: 'hello, world!'
 ```
