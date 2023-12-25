@@ -4,7 +4,7 @@ This sample shows the simplest usage.
 
 * Python code:
 ```py:01_echo.py
-def echo(message: str) -> tuple[str, str]:
+def echo(message: str) -> str:
   print("------ C++ -> Python ------")
   print(message)
   print()

@@ -1,4 +1,4 @@
-def echo(message: str) -> tuple[str, str]:
+def echo(message: str) -> str:
   print("------ C++ -> Python ------")
   print(message)
   print()
