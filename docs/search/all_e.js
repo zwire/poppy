@@ -10,7 +10,7 @@ var searchData=
   ['toint_7',['ToInt',['../classpoppy_1_1_value.html#a76d005b928f713d24417e0f37f888db9',1,'poppy::Value']]],
   ['tolist_8',['ToList',['../classpoppy_1_1_generic.html#a2708f7e3542c9f7ed1847f594bb2ca07',1,'poppy::Generic']]],
   ['tostdvector_9',['tostdvector',['../classpoppy_1_1_tuple.html#af6b2d823392f0a4c4a2e30dbe20e261e',1,'poppy::Tuple::ToStdVector()'],['../classpoppy_1_1_list.html#a2d985995511112858758a89151c69c04',1,'poppy::List::ToStdVector()'],['../classpoppy_1_1_dict.html#af5401f41fc59e3280785b5b088cf5d90',1,'poppy::Dict::ToStdVector()']]],
-  ['tostring_10',['ToString',['../classpoppy_1_1_value.html#aedab9614690b9025d3f7c5a5d2fa594f',1,'poppy::Value']]],
+  ['tostring_10',['tostring',['../classpoppy_1_1_object.html#a73eb39dc801e20a4867741882917c017',1,'poppy::Object::ToString()'],['../classpoppy_1_1_value.html#aedab9614690b9025d3f7c5a5d2fa594f',1,'poppy::Value::ToString()']]],
   ['totuple_11',['totuple',['../classpoppy_1_1_generic.html#a4dbcd33efc46637f0f3a62dc79a70838',1,'poppy::Generic::ToTuple()'],['../classpoppy_1_1_list.html#a958665a86b950b0d682f40ffe4b1f30a',1,'poppy::List::ToTuple()']]],
   ['tovalue_12',['ToValue',['../classpoppy_1_1_generic.html#a94e2d00b9d54a73dc7ce719c8b7452d4',1,'poppy::Generic']]],
   ['true_13',['True',['../classpoppy_1_1_value.html#ade16ed9814df9d263fddf07970dee118',1,'poppy::Value']]],

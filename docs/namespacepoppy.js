@@ -19,6 +19,8 @@ var namespacepoppy =
     [ "Float", "namespacepoppy.html#abd6a28388f53fc9f5dd77c8484a0dbea", null ],
     [ "Import", "namespacepoppy.html#a3f36925e02c50bcd600a5ab8654f9e4c", null ],
     [ "Initialize", "namespacepoppy.html#acf9b037c6cddc819e7ac9fd6bf39171e", null ],
+    [ "Initialize", "namespacepoppy.html#a8f9a0bd1c94735343e4755f30695c2d5", null ],
     [ "Int", "namespacepoppy.html#a36d6d97dd2ccd0c2e407dd5664f9dd25", null ],
+    [ "operator<<", "namespacepoppy.html#a0338ab62b23b050bf40461093fc042b6", null ],
     [ "Str", "namespacepoppy.html#a84d0c175ce69248c1613923107c0bf2b", null ]
 ];

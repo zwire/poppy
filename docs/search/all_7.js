@@ -1,7 +1,7 @@
 var searchData=
 [
   ['import_0',['import',['../classpoppy_1_1_object.html#a6d8d94b0318e6ec64957a5c3afacbdc9',1,'poppy::Object::Import'],['../namespacepoppy.html#a3f36925e02c50bcd600a5ab8654f9e4c',1,'poppy::Import(const std::string &amp;name) -&gt; Object']]],
-  ['initialize_1',['Initialize',['../namespacepoppy.html#acf9b037c6cddc819e7ac9fd6bf39171e',1,'poppy']]],
+  ['initialize_1',['initialize',['../namespacepoppy.html#acf9b037c6cddc819e7ac9fd6bf39171e',1,'poppy::Initialize() -&gt; void'],['../namespacepoppy.html#a8f9a0bd1c94735343e4755f30695c2d5',1,'poppy::Initialize(const std::wstring &amp;executable_path, const std::wstring &amp;modules_search_path) -&gt; void']]],
   ['insert_2',['Insert',['../classpoppy_1_1_list.html#af939c96f3ea4b2af14568d61c276075e',1,'poppy::List']]],
   ['int_3',['Int',['../namespacepoppy.html#a36d6d97dd2ccd0c2e407dd5664f9dd25',1,'poppy']]],
   ['invoke_4',['invoke',['../classpoppy_1_1_func.html#a24ff1c78f4575cbbe54074f48a2bfcc9',1,'poppy::Func::Invoke() const -&gt; Generic'],['../classpoppy_1_1_func.html#aec0381929b60c9ec4773291e596cfcd8',1,'poppy::Func::Invoke(const Object &amp;arg) const -&gt; Generic'],['../classpoppy_1_1_func.html#a445bfb5f965a076355d4a75a584f6967',1,'poppy::Func::Invoke(const Object &amp;first, const Object &amp;second, const Args &amp;... args) -&gt; Generic']]],

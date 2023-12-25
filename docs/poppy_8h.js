@@ -21,6 +21,8 @@ var poppy_8h =
     [ "Float", "poppy_8h.html#abd6a28388f53fc9f5dd77c8484a0dbea", null ],
     [ "Import", "poppy_8h.html#a3f36925e02c50bcd600a5ab8654f9e4c", null ],
     [ "Initialize", "poppy_8h.html#acf9b037c6cddc819e7ac9fd6bf39171e", null ],
+    [ "Initialize", "poppy_8h.html#a8f9a0bd1c94735343e4755f30695c2d5", null ],
     [ "Int", "poppy_8h.html#a36d6d97dd2ccd0c2e407dd5664f9dd25", null ],
+    [ "operator<<", "poppy_8h.html#a0338ab62b23b050bf40461093fc042b6", null ],
     [ "Str", "poppy_8h.html#a84d0c175ce69248c1613923107c0bf2b", null ]
 ];

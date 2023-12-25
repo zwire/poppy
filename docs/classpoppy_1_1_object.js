@@ -20,6 +20,7 @@ var classpoppy_1_1_object =
     [ "RemoveAttribute", "classpoppy_1_1_object.html#aef54cc8125cda773efb9285975432ef8", null ],
     [ "SetAttribute", "classpoppy_1_1_object.html#a85fffa1dab9c6b8f1b95eba747ec2211", null ],
     [ "SetAttributes", "classpoppy_1_1_object.html#a1e0bd0a221662a89ea10b5c0c4afaa26", null ],
+    [ "ToString", "classpoppy_1_1_object.html#a73eb39dc801e20a4867741882917c017", null ],
     [ "Type", "classpoppy_1_1_object.html#a6eeab79d53164a1b1454d8190366b070", null ],
     [ "Import", "classpoppy_1_1_object.html#a6d8d94b0318e6ec64957a5c3afacbdc9", null ]
 ];
