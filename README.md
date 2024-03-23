@@ -6,7 +6,7 @@ This repository provides a C++ wrapper library for the C-API to control the Pyth
 
 Designed to it feels like calling a dynamic library.
 
-API Reference: https://husty530.github.io/poppy/
+API Reference: https://zwire.github.io/poppy/
 
 
 Usage:
